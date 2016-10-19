@@ -1,0 +1,9 @@
+---
+  - name: list all files in {{ file_path }}
+    find: paths={{ file_path }} patterns="*" hidden=True
+    register: delete_file_list
+  - name: delete listed files
+    file: path={{ item.path }} state=absent
+    with_items:
+    - "{{ delete_file_list.files }}"
+...

@@ -1,0 +1,14 @@
+Copy the ssh keys:
+ $ ./copyid.sh trngXX@sisu
+
+List all hosts:
+ $ ansible-playbook setup_course.yml --list-hosts
+
+Test ansible setup:
+ $ ansible sisu -m ping
+
+Run playbook on a range of hosts:
+ $ ansible-playbook setup_course.yml --limit sisu[01-24]
+
+Copy the course material using synchronize
+ $ ansible-playbook -e 'MATERIALS_SOURCE_DIR=Course_material MATERIALS_TARGET_DIR=Intro-MPI' setup_course.yml --limit sisu[01-24]

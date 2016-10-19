@@ -1,0 +1,24 @@
+---
+- hosts: sisu
+  vars:
+    home_dir: "/homeappl/home/{{ ansible_user_id }}"
+    wrk_dir: "/wrk/{{ ansible_user_id }}"
+    materials_source_dir: "{{ MATERIALS_SOURCE_DIR|default('Courses') }}"
+    materials_target_dir: "{{ MATERIALS_TARGET_DIR|default('Courses') }}"
+  tasks:
+  - include: tasks/delete_files.yml
+    vars:
+      file_path:
+        - "{{ wrk_dir }}"
+        - "{{ home_dir }}/appl_taito"
+        - "{{ home_dir }}/appl_sisu"
+  - include: tasks/delete_dirs.yml
+    vars:
+      file_path:
+        - "{{ wrk_dir }}"
+        - "{{ home_dir }}/appl_taito"
+        - "{{ home_dir }}/appl_sisu"
+  - include: tasks/home_clean.yml
+  - include: tasks/editor.yml
+  - include: tasks/copy_material.yml
+...

@@ -1,0 +1,4 @@
+---
+    - name: make sure that the default editor is nano
+      lineinfile: dest="{{ home_dir }}/.bash_profile" line='export EDITOR=nano'
+...
