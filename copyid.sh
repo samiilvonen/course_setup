@@ -1,5 +1,7 @@
 #!/usr/bin/expect -f
 
+# See http://stackoverflow.com/questions/19403360/how-to-use-expect-to-copy-a-public-key-to-a-host
+
 set timeout 9
 set hostname [lindex $argv 0]
 
@@ -13,7 +15,7 @@ expect {
         send "yes\r"
         exp_continue    
     }
-    "*assword*" {
+    "*ssword*" {
         send "paaswordi\r"
         interact
         exit 0
