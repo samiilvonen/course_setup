@@ -1,8 +1,12 @@
 ---
   - name: list all directories in {{ file_path }}
+    tags:
+      - clean
     find: paths={{ file_path }} patterns="*" hidden=True file_type=directory
     register: delete_dir_list
   - name: delete listed dirs
+    tags:
+      - clean
     file: path={{ item.path }} state=absent
     with_items:
     - "{{ delete_dir_list.files }}"

@@ -1,22 +1,32 @@
 ---
     - name: list all files
+      tags:
+        - clean
       find: paths="{{ home_dir }}" patterns="*" hidden=True
       register: files_list
     - name: delete files
+      tags:
+        - clean
       file: path={{ item.path }} state=absent
       with_items:
       - "{{ files_list.files }}"
   #    - name: debug filelist
   #    debug: var=files_list
     - name: list all directories
+      tags:
+        - clean
       find: paths="{{ home_dir }}" patterns="^(?!\.ssh|\.ansible|appl_).*$" use_regex=True hidden=True file_type=directory
       register: dir_list
   #    - name: debug dir list
   #    debug: var=dir_list
     - name: delete directories
+      tags:
+        - clean
       file: path={{ item.path }} state=absent
       with_items:
       - "{{ dir_list.files }}"
     - name: find default profile files
+      tags:
+        - clean
       shell: cp -r /homeappl/appl_common/profile/skel/.b* /homeappl/home/{{ ansible_user_id }}
 ...

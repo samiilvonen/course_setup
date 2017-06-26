@@ -2,5 +2,7 @@
     - name: debug sync paths
       debug: var=materials_target_dir
     - name: copy course material
+      tags:
+        - copy_material
       synchronize: src={{ materials_source_dir }}/ dest={{ materials_target_dir }} mode=push
 ...

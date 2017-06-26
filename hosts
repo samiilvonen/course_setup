@@ -1,4 +1,5 @@
 [sisu]
+sisu00 ansible_host=sisu.csc.fi ansible_user=trng00
 sisu01 ansible_host=sisu.csc.fi ansible_user=trng01
 sisu02 ansible_host=sisu.csc.fi ansible_user=trng02
 sisu03 ansible_host=sisu.csc.fi ansible_user=trng03
